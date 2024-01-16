@@ -7,7 +7,7 @@ const Footer = () => {
         <footer className="footer p-10 text-base-content">
           <aside>
             <h1 className=" text-6xl font-serif font-semibold mt-4 mb-2 text-basicColor">
-              News 360
+              Business In Bangladesh
             </h1>
             <p>
               M360 Ltd.

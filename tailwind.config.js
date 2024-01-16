@@ -4,13 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        basicColor: "#008000",
+        basicColor: "#002366",
       },
       backgroundColor: {
-        basicColor: "#008000",
+        basicColor: "#002366",
       },
     },
   },
+  // eslint-disable-next-line no-undef
   plugins: [require("daisyui")],
   daisyui: {
     themes: ["light"],

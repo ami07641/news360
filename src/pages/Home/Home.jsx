@@ -1,34 +1,38 @@
-import BreakingNews from "../../shared/BreakingNews";
-import Header from "../../shared/Header";
-import Navbar from "../../shared/Navbar";
-import LeftSideBar from "../../shared/LeftSideBar/LeftSideBar";
 import RightSideBar from "../../shared/RightSideBar/RightSideBar";
 import Content from "../Content/Content";
 import VideoSection from "../VideoSection/VideoSection";
 import EntertainmentSection from "../EntertainmentSection/EntertainmentSection";
 import Sports from "../Sports/Sports";
 import FashionAndMediaHomeSection from "../FashionAndMediaHomeSection/FashionAndMediaHomeSection";
-import Footer from "../../shared/Footer/Footer";
+import { useContext } from "react";
+import { DataContext } from "../../context/MyContext";
 
 const Home = () => {
+  const { categories, allPosts } = useContext(DataContext);
+
+  // console.log("allPost", allPosts);
+
   return (
     <div>
-      <BreakingNews />
-      <Header />
-      <Navbar />
       <div className="max-w-screen-2xl mx-auto w-full grid grid-cols-1 lg:grid-cols-5 lg:gap-8 my-2">
         <div className="col-span-4">
           <Content />
         </div>
         <div className="col-span-1">
-          <RightSideBar />
+          {allPosts
+            ?.filter(
+              (item) => item?.category?.category_name === "Entertainment"
+            )
+            ?.slice(0, 4)
+            ?.map((items, index) => (
+              <RightSideBar key={index} items={items}></RightSideBar>
+            ))}
         </div>
       </div>
       <Sports />
       <EntertainmentSection />
       <FashionAndMediaHomeSection />
       <VideoSection />
-      <Footer />
     </div>
   );
 };

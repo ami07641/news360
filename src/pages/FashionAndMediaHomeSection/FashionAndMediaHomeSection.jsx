@@ -3,8 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import fashion1 from "../../assets/fashion1.webp";
 import music1 from "../../assets/music1.jpeg";
 import RightSideBar from "../../shared/RightSideBar/RightSideBar";
+import { useContext } from "react";
+import { DataContext } from "../../context/MyContext";
 
 const FashionAndMediaHomeSection = () => {
+  const { categories, filterItem } = useContext(DataContext);
+  // console.log("filterItem", filterItem);
   return (
     <div className="px-2 lg:px-0 my-5">
       <div className="max-w-screen-2xl mx-auto mb-16">
@@ -43,7 +47,16 @@ const FashionAndMediaHomeSection = () => {
                 </section>
               </div>
               <div className="-mt-8 ">
-                <RightSideBar />
+                {filterItem.slice(0, 3).map((items, index) => (
+                  <div
+                    key={index}
+                    className="col-span-1 grid grid-rows-3 gap-5 "
+                  >
+                    <div className="row-span-3">
+                      <RightSideBar items={items}></RightSideBar>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -80,7 +93,16 @@ const FashionAndMediaHomeSection = () => {
                 </section>
               </div>
               <div className="-mt-8 ">
-                <RightSideBar />
+                {filterItem.slice(4, 7).map((items, index) => (
+                  <div
+                    key={index}
+                    className="col-span-1 grid grid-rows-3 gap-5 "
+                  >
+                    <div className="row-span-3">
+                      <RightSideBar items={items}></RightSideBar>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
